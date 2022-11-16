@@ -1,17 +1,22 @@
 /* eslint-disable jsx-a11y/alt-text */
 import React from 'react';
 import './Login.css';
-import { Link } from 'react-router-dom';
+import { BrowserRouter as Router, Routes } from 'react-router-dom';
 import { useState } from 'react';
 import EmployeesData from '../../EmployeesData';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Hero from '../Hero/Hero';
+import { useNavigate } from 'react-router-dom';
+import Hero from './../Hero/Hero';
 
-//import EmployeesData from '../../EmployeesData';
 const Login = () => {
+  const navigate = useNavigate();
+
   const usernames = EmployeesData.map((employe) => {
     //console.log(employe.username);
     return employe.username;
+  });
+
+  const roles = EmployeesData.map((employe) => {
+    return employe.role;
   });
   //console.log('usernames mapeados', usernames);
 
@@ -19,6 +24,9 @@ const Login = () => {
     //console.log('contrase;as mapeadas', employePassword.password);
     return employePassword.password;
   });
+
+  //const [correctUsername, setCorrectUsername] = useState(false);
+  // const [correctPassword, setCorrectPassword] = useState(false);
 
   const [username, setUsername] = useState('');
   const [usernameError, setUsernameError] = useState('');
@@ -39,16 +47,12 @@ const Login = () => {
     setPasswordError('');
     setPassword(e.target.value);
   };
-  /*if (correctUsername && correctPassword === true) {
-    <Link to={'hero'}>
-    </Link>*/
 
   const handleFormSubmit = (e) => {
-    let correctUsername = false;
-    let correctPassword = false;
-
     e.preventDefault();
 
+    let correctUsername = false;
+    let correctPassword = false;
     //check if email is empty
 
     if (username !== '') {
@@ -59,7 +63,8 @@ const Login = () => {
           console.log('username match');
           setUsernameError('');
           correctUsername = true;
-          // console.log(correctUsername);
+          //setCorrectUsername(true);
+          console.log('user name correct? :', correctUsername);
           break;
         } else {
           setUsernameError('Incorrect Username');
@@ -78,20 +83,37 @@ const Login = () => {
           console.log('password match');
           setPasswordError('');
           correctPassword = true;
-          //console.log(correctPassword);
+          //setCorrectPassword(true);
+          console.log('password name correct?:', correctPassword);
           break;
         } else {
           setPasswordError('Incorrect Password');
+          console.log(correctPassword);
           //console.log('password dont match');
         }
       }
     } else {
       setPasswordError('Password Required');
     }
+    console.log('hola');
 
-    if (correctUsername && correctPassword === true) {
+    if (correctUsername && correctPassword == true) {
+      navigate('/hero', {
+        state: {
+          username: { username },
+        },
+      });
     }
   };
+
+  /*if (correctUsername && correctPassword == true) {
+    Navigate('/hero');
+  }*/
+
+  /*const handleOnClick = () => {
+    if (correctUsername && correctPassword == true) {
+      navigate('/hero');
+    }*/
 
   return (
     <div className="login-wrap">
@@ -115,12 +137,10 @@ const Login = () => {
             value={password}
           />
           {passwordError && <div className="error-msg">{passwordError}</div>}
-          <Link to={'hero'}>
-            <button className="login-button spaced">Log in</button>
-          </Link>
-          ;
+          <button className="login-button spaced">Log in</button>
         </form>
       </div>
+      r
     </div>
   );
 };
