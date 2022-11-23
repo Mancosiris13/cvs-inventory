@@ -10,20 +10,18 @@ import Hero from './../Hero/Hero';
 const Login = () => {
   const navigate = useNavigate();
 
-  const usernames = EmployeesData.map((employe) => {
+  const usersInfo = EmployeesData.map((employe) => {
     //console.log(employe.username);
-    return employe.username;
+    return {
+      id: employe.id,
+      name: employe.name,
+      username: employe.username,
+      role: employe.role,
+      password: employe.password,
+    };
   });
 
-  const roles = EmployeesData.map((employe) => {
-    return employe.role;
-  });
   //console.log('usernames mapeados', usernames);
-
-  const passwords = EmployeesData.map((employePassword) => {
-    //console.log('contrase;as mapeadas', employePassword.password);
-    return employePassword.password;
-  });
 
   //const [correctUsername, setCorrectUsername] = useState(false);
   // const [correctPassword, setCorrectPassword] = useState(false);
@@ -51,15 +49,22 @@ const Login = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    //.log('usersinfo.username: ', usersInfo.username);
+    //console.log('usersinfo.password: ', usersInfo.password);
     let correctUsername = false;
     let correctPassword = false;
+    let role = '';
+    let name = '';
     //check if email is empty
 
     if (username !== '') {
       //check some other condition
-      for (let individualUsername of usernames) {
-        if (individualUsername === username) {
-          console.log('username inputed ', individualUsername);
+      for (let individualUsername of usersInfo) {
+        //console.log('individualUsername: ', individualUsername.username);
+        if (individualUsername.username === username) {
+          name = individualUsername.name;
+          role = individualUsername.role;
+          console.log('username inputed ', username);
           console.log('username match');
           setUsernameError('');
           correctUsername = true;
@@ -77,9 +82,9 @@ const Login = () => {
     //check if password is empty
     if (password !== '') {
       //do something here
-      for (let individualPassword of passwords) {
-        if (individualPassword === password) {
-          console.log('password inputed ', individualPassword);
+      for (let individualPassword of usersInfo) {
+        if (individualPassword.password === password) {
+          console.log('password inputed ', password);
           console.log('password match');
           setPasswordError('');
           correctPassword = true;
@@ -98,9 +103,11 @@ const Login = () => {
     console.log('hola');
 
     if (correctUsername && correctPassword == true) {
-      navigate('/hero', {
+      navigate('/categories', {
         state: {
+          name: { name },
           username: { username },
+          role: { role },
         },
       });
     }

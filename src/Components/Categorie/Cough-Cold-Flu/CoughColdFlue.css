@@ -1,0 +1,28 @@
+.cards-div {
+  font-size: 14px;
+  width: 175px;
+  display: inline-flex;
+  flex: 0 0 auto;
+  flex-direction: column;
+  margin: 0 20px;
+  position: relative;
+}
+
+.medicine-photo {
+  width: 100%;
+  border-radius: 2%;
+}
+
+.extra-info {
+  padding-top: 5px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.number {
+  float: left;
+  display: block;
+  margin-right: 5px;
+  flex-direction: column;
+}
