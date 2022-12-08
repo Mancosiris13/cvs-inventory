@@ -147,7 +147,6 @@ const Login = () => {
           <button className="login-button spaced">Log in</button>
         </form>
       </div>
-      r
     </div>
   );
 };

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import CardComponent from '../../ReusableComponents/CardComponent';
 import '../../ReusableComponents/Categories&ReturnButton.css';
-import CoughData from './CoughMedicineData';
+import FirstAidData from './FirstAidData';
 
 const createCard = (info) => {
   return (
@@ -17,19 +17,19 @@ const createCard = (info) => {
   );
 };
 
-const CoughColdFlue = () => {
+const FirstAide = () => {
   const navigate = useNavigate();
 
   return (
     <div className="container">
-      <h1 className="header">Cough, Cold & Flu</h1>
+      <h1 className="header">First Aid</h1>
       <button onClick={() => navigate(-1)} className="return-categos-button">
         Return to Categories
       </button>
 
-      <div className="maped-container">{CoughData.map(createCard)}</div>
+      <div className="maped-container">{FirstAidData.map(createCard)}</div>
     </div>
   );
 };
 
-export default CoughColdFlue;
+export default FirstAide;

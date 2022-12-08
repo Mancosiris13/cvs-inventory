@@ -11,7 +11,7 @@ export default [
   },
   {
     categoryName: 'Allergy & asthma',
-    path: '/allergu-asthma',
+    path: '/allergy-asthma',
   },
   {
     categoryName: 'Digestive Health',
@@ -20,17 +20,5 @@ export default [
   {
     categoryName: 'First aid',
     path: '/first-aid',
-  },
-  {
-    categoryName: 'Pain & fever',
-    path: '/pain-fever',
-  },
-  {
-    categoryName: 'Face coverings & masks',
-    path: '/face-corvering-masks',
-  },
-  {
-    categoryName: 'Home tests',
-    path: '/home-tests',
   },
 ];

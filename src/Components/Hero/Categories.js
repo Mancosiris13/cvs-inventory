@@ -14,11 +14,13 @@ const Categories = () => {
         <ul>
           {categories.map((category, key, path) => {
             return (
-              <Link to={category.path}>
-                <li key={key} className="individual-category">
-                  {category.categoryName}
-                </li>
-              </Link>
+              <button className="individual-button">
+                <Link to={category.path}>
+                  <li key={key} className="individual-category">
+                    {category.categoryName}
+                  </li>
+                </Link>
+              </button>
             );
           })}
         </ul>

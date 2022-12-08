@@ -13,8 +13,8 @@ const Hero = (props) => {
   console.log(role);
 
   return (
-    <div>
-      <p>Welcome {name}</p>
+    <div className="hero-div">
+      <p className="welcome-message">Welcome {name}</p>
       <Categories />
     </div>
   );
